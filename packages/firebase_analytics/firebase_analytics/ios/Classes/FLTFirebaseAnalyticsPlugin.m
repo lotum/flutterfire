@@ -41,7 +41,7 @@
     result(nil);
   } else if ([@"setUserId" isEqualToString:call.method]) {
     NSString *userId = call.arguments;
-    [FIRAnalytics setUserID:userId];
+    [FIRAnalytics setUserID:[userId isKindOfClass:[NSNull class]] ? nil : userId];
     result(nil);
   } else if ([@"setCurrentScreen" isEqualToString:call.method]) {
     NSString *screenName = call.arguments[@"screenName"];
@@ -55,7 +55,8 @@
   } else if ([@"setUserProperty" isEqualToString:call.method]) {
     NSString *name = call.arguments[@"name"];
     NSString *value = call.arguments[@"value"];
-    [FIRAnalytics setUserPropertyString:value forName:name];
+    [FIRAnalytics setUserPropertyString:[value isKindOfClass:[NSNull class]] ? nil : value
+                                forName:name];
     result(nil);
   } else if ([@"setAnalyticsCollectionEnabled" isEqualToString:call.method]) {
     NSNumber *enabled = call.arguments;
