@@ -19,7 +19,7 @@ external AnalyticsJsImpl getAnalytics([AppJsImpl? app]);
 external AnalyticsJsImpl initializeAnalytics([AppJsImpl app]);
 
 @JS()
-external bool isSupported();
+external PromiseJsImpl<bool> isSupported();
 
 @JS()
 external void logEvent(

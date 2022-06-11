@@ -32,6 +32,9 @@ class Analytics extends JsObjectWrapper<analytics_interop.AnalyticsJsImpl> {
     return _expando[jsObject] ??= Analytics._fromJsObject(jsObject);
   }
 
+  static Future<bool> isSupported() async =>
+      handleThenable(analytics_interop.isSupported());
+
   /// Non-null App for this instance of analytics service.
   App get app => App.getInstance(jsObject.app);
 

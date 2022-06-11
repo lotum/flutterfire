@@ -38,6 +38,9 @@ class FirebaseAnalyticsWeb extends FirebaseAnalyticsPlatform {
     return FirebaseAnalyticsWeb(app: app);
   }
 
+  static Future<bool> isSupported() =>
+      analytics_interop.Analytics.isSupported();
+
   @override
   Future<void> logEvent({
     required String name,
